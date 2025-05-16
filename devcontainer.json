@@ -1,0 +1,16 @@
+{
+  "name": "pspcodex-heroku",
+  // Pick the base image that matches the Heroku build-pack you’ll use.
+  "image": "mcr.microsoft.com/devcontainers/python:0-3.12",
+
+  // Installs the Heroku CLI in seconds:
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/heroku-cli:1": {}
+  },
+
+  // Work-around for the current Docker-25 ↔ Codespaces IPv6 bug
+  "runArgs": ["--sysctl", "net.ipv6.conf.all.disable_ipv6=1"],
+
+  // Smoke-test after the container starts
+  "postCreateCommand": "heroku --version"
+}
